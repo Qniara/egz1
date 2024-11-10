@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - Firma IT</title>
+    <link rel="stylesheet" href="styl.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <nav>
+                <a href="index.html">Strona główna</a>
+                <a href="uslugi.html">Usługi</a>
+                <a href="kontakt.html">Kontakt</a>
+            </nav>
+        </header>
+    
+        <section class="baner">
+            <img src="animacja.gif" alt="Animowany baner">
+        </section>
+    
+        <maina>
+            <h1>Kontakt</h1>
+            <table>
+                <tr>
+                    <td>Imię: </td>
+                    <td><input type="text" id="imie"></td>
+                </tr>
+                <tr>
+                    <td>Nazwisko: </td>
+                    <td><input type="text" id="nazwisko"></td>
+                </tr>
+                <tr>
+                    <td>Email: </td>
+                    <td><input type="email" id="email"></td>
+                </tr>
+                <tr>
+                    <td>Zgloszenie: </td>
+                    <td><textarea id="zgloszenie" rows="10" cols="50"></textarea></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="checkbox" id="regulamin"> Zapoznałem się z regulaminem</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button type="button" onclick="odsiwierz()">Resetuj</button>
+                        <button type="button" onclick="wyslijFormularz()">Prześlij</button>
+                    </td>
+                </tr>
+            </table>
+        </maina>
+        <div id="paragraf"></div>
+        <hr>
+        <footer>
+            <p>Autor strony: 00000000</p>
+        </footer>
+    </div>
+    <script>
+        function odsiwierz(){
+            document.getElementById("imie").value = "";
+            document.getElementById("nazwisko").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("zgloszenie").value = "";
+        }
+        function wyslijFormularz() {
+            var imie = document.getElementById("imie").value;
+            var nazwisko = document.getElementById("nazwisko").value;
+            var zgloszenie = document.getElementById("zgloszenie").value;
+            var regulamin = document.getElementById("regulamin").checked;
+            var p = document.getElementById("paragraf");
+            if (!regulamin) {
+                p.innerText = "Musisz zapoznać się z regulaminem";
+                p.style.color = "red";
+            } 
+            else {
+                var imieNazwiskoUpper = `${imie.toUpperCase()} ${nazwisko.toUpperCase()}`;
+                p.innerHTML = `${imieNazwiskoUpper}<br>Treść Twojej sprawy: ${zgloszenie}`;
+                p.style.color = "navy";
+            }
+        }
+
+    </script>
+</body>
+</html>
